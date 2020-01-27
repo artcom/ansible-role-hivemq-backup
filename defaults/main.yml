@@ -1,0 +1,3 @@
+---
+hivemq_backup_data_path: /var/local/hivemq
+hivemq_backup_destination_path: "{{ hivemq_backup_data_path }}/backup"

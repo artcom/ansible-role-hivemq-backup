@@ -1,0 +1,28 @@
+---
+- name: Ensure {{ hivemq_backup_data_path }} directory exists
+  file:
+    path: "{{ hivemq_backup_data_path }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: copy hivemq backup script
+  template:
+    src: backup.sh
+    dest: "{{ hivemq_backup_data_path }}/backup.sh"
+    owner: root
+    group: root
+    mode: "0744"
+
+- name: Ensure /var/spool/cron directory exists
+  file:
+    path: /var/spool/cron
+    state: directory
+
+- name: Create hivemq backup cronjob
+  cron:
+    minute: "0"
+    hour: "1"
+    name: "Backup HiveMQ"
+    job: "/bin/bash {{ hivemq_backup_data_path }}/backup.sh"
