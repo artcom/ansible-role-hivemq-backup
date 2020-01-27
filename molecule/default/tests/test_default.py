@@ -36,3 +36,13 @@ def test_spool_cron(host):
 
     assert spool_cron.exists
     assert spool_cron.is_directory
+
+
+def test_backup_crontab(host):
+    backup_crontab = host.file('/var/spool/cron/crontabs/root')
+
+    assert backup_crontab.exists
+    assert backup_crontab.is_file
+    assert backup_crontab.contains(
+        r'^0 1 \* \* \* /bin/bash /var/local/hivemq/backup\.sh$'
+    )
