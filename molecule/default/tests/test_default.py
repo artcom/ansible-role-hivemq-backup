@@ -25,7 +25,10 @@ def test_hivemq_backup_script(host):
     assert hivemq_backup_script.user == 'root'
     assert hivemq_backup_script.group == 'root'
     assert oct(hivemq_backup_script.mode) == '0o744'
-    assert hivemq_backup_script.sha256sum == '8492fa455080dbfb105ab5eb5a60dd54aa8e4e8d7ad2115491bfb4d4d49a0222'
+    assert (
+        hivemq_backup_script.sha256sum ==
+        'a512edfdffbf0626a0a5c466de73e0c8a1f97e7e9c48ea771c5b0ce2b4e7c60a'
+    )
 
 
 def test_spool_cron(host):
