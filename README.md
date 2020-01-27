@@ -1,4 +1,4 @@
-# Git Repo
+# HiveMQ Backup
 Ansible role to make periodic backups of HiveMQ broker data.
 
 ## Requirements
