@@ -1,7 +1,15 @@
 ---
-- name: Ensure {{ hivemq_backup_data_path }} directory exists
+- name: check mandatory variables
+  fail:
+    msg: 'variable {{ mandatory_var.key }} not defined'
+  when: not mandatory_var.value
+  loop: "{{ mandatory_vars | dict2items }}"
+  loop_control:
+    loop_var: mandatory_var
+
+- name: Ensure {{ backup_data_path }} directory exists
   file:
-    path: "{{ hivemq_backup_data_path }}"
+    path: "{{ backup_data_path }}"
     state: directory
     owner: root
     group: root
@@ -10,7 +18,7 @@
 - name: copy hivemq backup script
   template:
     src: backup.sh
-    dest: "{{ hivemq_backup_data_path }}/backup.sh"
+    dest: "{{ backup_data_path }}/backup.sh"
     owner: root
     group: root
     mode: "0744"
@@ -25,4 +33,4 @@
     minute: "0"
     hour: "1"
     name: "Backup HiveMQ"
-    job: "/bin/bash {{ hivemq_backup_data_path }}/backup.sh"
+    job: "/bin/bash {{ backup_data_path }}/backup.sh"

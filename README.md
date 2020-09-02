@@ -7,8 +7,13 @@ None.
 ## Role Variables
 Available variables are listed below, along with default values `(see defaults/main.yml)`:
 ```yaml
-hivemq_backup_data_path: /var/local/hivemq
-hivemq_backup_destination_path: "{{ hivemq_backup_data_path }}/backup"
+backup_data_path: null
+backup_destination_path: null
+```
+Mandatory variables (role will fail if the variables are not
+```yaml
+backup_data_path: "string"
+backup_destination_path: "string"
 ```
 
 ## Dependencies
@@ -21,6 +26,9 @@ None.
   become: true
   roles:
     - role: hivemq-backup
+      vars:
+        backup_data_path: /var/local/hivemq
+        backup_destination_path: "{{ backup_data_path }}/backup"
 ```
 
 ## Test

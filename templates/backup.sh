@@ -7,8 +7,8 @@ set -o pipefail
 TIME=$(date +%Y-%m-%d-%H%M%S)
 echo Creating backup $TIME
 
-HIVEMQ_PATH={{ hivemq_backup_data_path }}
-BACKUP_PATH={{ hivemq_backup_destination_path }}
+HIVEMQ_PATH={{ backup_data_path }}
+BACKUP_PATH={{ backup_destination_path }}
 
 # backup retained_messages
 RETAINED_MESSAGES_PATH=data/persistence/retained_messages

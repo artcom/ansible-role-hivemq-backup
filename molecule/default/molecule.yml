@@ -3,18 +3,21 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
 platforms:
   - name: xenial
     image: ubuntu:xenial
   - name: bionic
     image: ubuntu:bionic
+  - name: focal
+    image: ubuntu:focal
+  - name: buster
+    image: debian:buster
 provisioner:
   name: ansible
-  lint:
-    name: ansible-lint
 verifier:
   name: testinfra
-  lint:
-    name: flake8
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+  flake8
