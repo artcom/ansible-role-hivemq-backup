@@ -10,7 +10,7 @@ Available variables are listed below, along with default values `(see defaults/m
 backup_data_path: null
 backup_destination_path: null
 ```
-Mandatory variables (role will fail if the variables are not
+Mandatory variables (role will fail if the variables are not set):
 ```yaml
 backup_data_path: "string"
 backup_destination_path: "string"
