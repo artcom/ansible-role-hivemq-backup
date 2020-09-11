@@ -9,7 +9,15 @@ galaxy_info:
   platforms:
   - name: Ubuntu
     versions:
-    - xenial
-    - bionic
+      - xenial
+      - bionic
+      - focal
+  - name: Debian
+    versions:
+      - buster
   galaxy_tags: []
-dependencies: []
+dependencies:
+  - src: git@github.com:artcom/ansible-role-check-required-variables.git
+    scm: git
+    version: "v1.0.0"
+    name: check-required-variables

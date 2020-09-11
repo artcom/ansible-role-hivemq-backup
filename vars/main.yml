@@ -1,4 +1,4 @@
 ---
-mandatory_vars:
+required_vars:
   backup_data_path: "{{ backup_data_path }}"
   backup_destination_path: "{{ backup_destination_path }}"
