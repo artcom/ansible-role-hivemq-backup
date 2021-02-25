@@ -4,8 +4,11 @@
   become: true
   vars:
     ansible_python_interpreter: /usr/bin/python3
-  roles:
-    - role: hivemq-backup
+
+  tasks:
+    - name: set up hivemq backup
+      ansible.builtin.include_role:
+        name: hivemq-backup
       vars:
         backup_data_path: /var/local/hivemq
         backup_destination_path: "{{ backup_data_path }}/backup"

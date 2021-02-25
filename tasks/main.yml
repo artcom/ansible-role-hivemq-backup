@@ -1,6 +1,6 @@
 ---
 - name: Ensure {{ backup_data_path }} directory exists
-  file:
+  ansible.builtin.file:
     path: "{{ backup_data_path }}"
     state: directory
     owner: root
@@ -8,7 +8,7 @@
     mode: "0755"
 
 - name: copy hivemq backup script
-  template:
+  ansible.builtin.template:
     src: backup.sh
     dest: "{{ backup_data_path }}/backup.sh"
     owner: root
@@ -16,12 +16,12 @@
     mode: "0744"
 
 - name: Ensure /var/spool/cron directory exists
-  file:
+  ansible.builtin.file:
     path: /var/spool/cron
     state: directory
 
 - name: Create hivemq backup cronjob
-  cron:
+  ansible.builtin.cron:
     minute: "0"
     hour: "1"
     name: "Backup HiveMQ"
