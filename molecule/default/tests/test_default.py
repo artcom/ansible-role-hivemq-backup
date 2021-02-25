@@ -27,7 +27,7 @@ def test_hivemq_backup_script(host):
     assert oct(hivemq_backup_script.mode) == '0o744'
     assert (
         hivemq_backup_script.sha256sum ==
-        'a512edfdffbf0626a0a5c466de73e0c8a1f97e7e9c48ea771c5b0ce2b4e7c60a'
+        'e759fa4401aa954645279eb49766f086872266023116d0502ae632bc615a5f8d'
     )
 
 
